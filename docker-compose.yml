@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  wordpress-playground:
+    build: .
+    ports:
+      - "5400:5400"
+    volumes:
+      - ./app:/usr/src/app
+      - /usr/src/app/node_modules
+
+    networks:
+      - default
+      - nginx-proxy-manager_default
+
+networks:
+  default:
+
+  nginx-proxy-manager_default:
+    external: true
